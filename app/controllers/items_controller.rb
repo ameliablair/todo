@@ -29,6 +29,8 @@ end
   # POST /items.json
   def create
     @item = Item.new(item_params)
+    logger.debug item_params
+
 
     respond_to do |format|
       if @item.save
@@ -75,6 +77,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:item)
+      params.require(:item).permit(:item, :desc, :name)
     end
 end
